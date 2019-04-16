@@ -7,3 +7,5 @@ WORKDIR /app/paperrank
 # Use COPY because volumes are not available during build
 COPY ./requirements.txt /app/paperrank
 RUN pip install --no-cache-dir -r requirements.txt
+
+ADD . /app/paperrank

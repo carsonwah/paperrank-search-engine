@@ -1,4 +1,4 @@
-# For deployment
+# For production
 
 version: '3'
 
@@ -25,8 +25,11 @@ services:
       - .:/app/paperrank
     ports:
       - "8000:8000"
-    # Open gunicorn, 1 worker process, bind 8000 port, auto-reload (for dev only)
-    command: gunicorn -w 1 -b :8000 --log-level debug --reload app:app
+    environment:
+      - FLASK_DEBUG=0
+      - FLASK_ENV=production
+    # Start gunicorn, 1 worker process, bind 8000 port, auto-reload (for dev only)
+    command: gunicorn -w 1 -b :8000 --log-level debug --capture-output --reload app:app
     networks:
       - esnet
 

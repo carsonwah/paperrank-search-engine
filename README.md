@@ -1,10 +1,10 @@
 # PaperRank: A Reputation-based Search Engine for Academic Papers
 
-## Getting Started
+## 1. Getting Started
 
 You may run it locally or inside docker.
 
-### I. Backend only
+### A. Web server only
 
 Install `python3`, `virtualenv`.
 
@@ -17,7 +17,7 @@ $ source env/bin/activate
 
 Then, go to http://localhost:8000/ and have a check.
 
-### II. Run with elasticsearch using docker
+### B. Run server + elasticsearch using docker
 
 Install [Docker](https://www.docker.com/get-started).
 
@@ -27,13 +27,39 @@ $ docker-compose up
 
 # Run in background
 $ docker-compose up -d
-
-# If config has changed, rebuild the image
-$ docker-compose up -d --force-recreate --build <container_name>
 ```
 
-#### Included services
+This will boot up the following services
 
 - **nginx** server listening on :80
-- **gunicorn** server listening on :8000
+- **flask** server listening on :8000
 - **elasticsearch** server listening on :9200
+
+Run `docker ps` to view your running containers.  
+Run `docker logs -f flask_server` to view server logs.  
+Go to http://localhost:8000/ to view the UI.
+
+#### Other useful commands
+
+```bash
+# Restart containers
+$ docker-compose restart flask_server nginx
+
+# If Dockerfile has changed, rebuild the image
+$ docker-compose up -d --force-recreate --build flask_server nginx
+```
+
+## 2. Project Structure
+
+- **webapp/**
+  - HTTP server serving the search webpages
+- **data/**
+  - Papers Data
+  - Data preprocessing
+  - Elasticsearch
+- **paperrank/**
+  - Algorithm of PaperRank
+- nginx/
+  - Reverse proxy server (for deployment only)
+- requirements.txt
+  - Python dependencies

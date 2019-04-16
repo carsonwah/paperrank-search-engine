@@ -1,0 +1,22 @@
+# For deployment
+
+version: '3'
+
+services:
+
+  # Run the Flask WSGI server with gunicorn
+  flask_server:
+    container_name: flask_server
+    # restart: always
+    build: .
+    volumes:
+      - .:/app/paperrank
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_APP=app:app
+      - FLASK_DEBUG=1
+      - FLASK_ENV=development
+    command: flask run --host=0.0.0.0 --port=8000
+    networks:
+      - esnet
