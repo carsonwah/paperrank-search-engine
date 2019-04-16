@@ -37,6 +37,7 @@ This will boot up the following services
 
 Run `docker ps` to view your running containers.  
 Run `docker logs -f flask_server` to view server logs.  
+Run `docker exec -it flask_server bash` to get into the container.  
 Go to http://localhost:8000/ to view the UI.
 
 #### Other useful commands
