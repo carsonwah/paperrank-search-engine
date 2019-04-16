@@ -35,14 +35,23 @@ This will boot up the following services
 - **flask** server listening on :8000
 - **elasticsearch** server listening on :9200
 
-Run `docker ps` to view your running containers.  
-Run `docker logs -f flask_server` to view server logs.  
-Run `docker exec -it flask_server bash` to get into the container.  
 Go to http://localhost:8000/ to view the UI.
 
 #### Other useful commands
 
 ```bash
+# View your running containers
+$ docker ps
+
+# Shut down all containers
+$ docker-compose down
+
+# View server logs
+$ docker logs -f flask_server
+
+# Get into the container
+$ docker exec -it flask_server bash
+
 # Restart containers
 $ docker-compose restart flask_server nginx
 
