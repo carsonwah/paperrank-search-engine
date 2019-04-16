@@ -4,21 +4,74 @@ version: '3'
 
 services:
 
-  flask_server:
-    container_name: flask_server
-    restart: always
-    build: .
-    volumes:
-      - .:/app/i-care
-    ports:
-      - "8000:8000"
-    command: gunicorn -w 1 -b :8000 app:app
-
+  # nginx as a reverse proxy
   nginx:
     container_name: nginx
-    restart: always
+    # restart: always
     build: ./nginx
     ports:
       - "80:80"
     depends_on:
       - flask_server
+    networks:
+      - esnet
+
+  # Run the Flask WSGI server with gunicorn
+  flask_server:
+    container_name: flask_server
+    # restart: always
+    build: .
+    volumes:
+      - .:/app/paperrank
+    ports:
+      - "8000:8000"
+    # Open gunicorn, 1 worker process, bind 8000 port, auto-reload (for dev only)
+    command: gunicorn -w 1 -b :8000 --log-level debug --reload app:app
+    networks:
+      - esnet
+
+  # Elasticsearch node 1
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+
+  # Elasticsearch node 2
+  elasticsearch2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.1
+    container_name: elasticsearch2
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata2:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+
+networks:
+  esnet:
