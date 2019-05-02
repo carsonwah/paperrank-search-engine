@@ -3,7 +3,7 @@ import json
 
 
 if __name__ == "__main__":
-    with open('../../data/static/sample.json', 'r', encoding='UTF-8') as data:
+    with open('../../data/local/filtered_papers.json', 'r', encoding='UTF-8') as data:
 
         # Construct paper dict
         paper_out_citations_dict = {}
