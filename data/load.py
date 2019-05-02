@@ -156,4 +156,4 @@ class ElasticObj:
 if __name__ == '__main__':
     obj = ElasticObj("academic", "article")
     obj.create_index()
-    obj.insert_data('/data/static/sample.json')
+    obj.insert_data('/static/sample.json')
