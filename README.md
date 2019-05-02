@@ -2,7 +2,7 @@
 
 ## 1. Getting Started
 
-You may run it locally or inside docker.
+You may run it locally or inside docker. **Prefer docker**.
 
 ### A. Web server only
 
@@ -66,10 +66,26 @@ $ docker-compose up -d --force-recreate --build flask_server nginx
 - **data/**
   - Papers Data
   - Data preprocessing
-  - Elasticsearch
+  - Elasticsearch scripts
 - **paperrank/**
   - Algorithm of PaperRank
 - nginx/
   - Reverse proxy server (for deployment only)
 - requirements.txt
   - Python dependencies
+
+## 3. Usage
+
+### Elasticsearch
+
+Firstly, make sure elasticsearch cluster is up and running.
+
+```bash
+cd data/
+
+# Load initial data into elasticsearch
+$ python load.py
+
+# Sample query
+$ python query.py
+```
