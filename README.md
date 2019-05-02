@@ -84,8 +84,16 @@ Firstly, make sure elasticsearch cluster is up and running.
 cd data/
 
 # Load initial data into elasticsearch
-$ python load.py
+python load.py
 
 # Sample query
-$ python query.py
+python query.py
+```
+
+### PaperRank
+
+```bash
+# Preprocess data into link csv file
+cd paperrank/data/
+python preprocess.py
 ```
