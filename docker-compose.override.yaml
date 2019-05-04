@@ -4,7 +4,7 @@ version: '3'
 
 services:
 
-  # Run the Flask WSGI server with gunicorn
+  # Run with flask dev server
   flask_server:
     container_name: flask_server
     # restart: always
