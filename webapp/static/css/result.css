@@ -1,0 +1,51 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.logo {
+    width: 280px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.searchbar {
+    margin-left: 40px;
+    width: 500px;
+}
+
+.searchbutton {
+    margin-left: 40px;
+    width: 120px;
+    background-color: #ddd;
+}
+
+.performance-text {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 0;
+}
+
+.result-container {
+    max-width: 800px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.result-title {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.result-cite {
+    color: #2A642A;
+    font-size: 14px;
+    font-style: normal;
+}
+
+.result-text {
+    font-size: 14px;
+}
+
+
