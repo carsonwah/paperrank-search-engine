@@ -105,6 +105,9 @@ class ElasticObj:
                         "pmid": {  # Unique identifier used by PubMed.
                             'type': 'string',
                             'index': 'not_analyzed'
+                        },
+                        "pagerank":{ #pagerank score
+                             'type': 'rank_feature'
                         }
                     }
                 }
@@ -156,4 +159,4 @@ class ElasticObj:
 if __name__ == '__main__':
     obj = ElasticObj("academic", "article")
     obj.create_index()
-    obj.insert_data('/static/sample.json')
+    obj.insert_data('/pagerank_result.json')
