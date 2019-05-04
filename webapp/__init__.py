@@ -13,7 +13,7 @@ def home_page():
 # Result page
 @app.route('/result', methods=['GET'], strict_slashes=False)
 def result_page():
-    query = request.args.get('q', default = '', type = str)
+    query = request.args.get('query', default = '', type = str)
 
     # TODO
 
