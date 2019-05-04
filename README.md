@@ -81,10 +81,10 @@ $ docker-compose up -d --force-recreate --build flask_server nginx
 #### 1. Filtered papers
 
 Removed papers **without valid "outCitations"**.  
-Original: 2.45GB, 1000000 papers  
-Now: 431MB, 81759 papers
+Original: 7.35GB, 3000000 papers  
+Now: 2.07GB, 425876 papers
 
-1. Download [here](https://drive.google.com/file/d/1R_95ed9YKCOOxLBZ_yt_vHCrFkP3ux2D/view?usp=sharing) and unzip.
+1. Download [here](https://drive.google.com/open?id=1VvaRUU4qhq_LE3723G3__O1Fap51b1D_) and unzip.
 2. Then, put it in `/data/local/filtered_papers.json`.
 
 ### Elasticsearch
