@@ -1,5 +1,7 @@
 # PaperRank: A Reputation-based Search Engine for Academic Papers
 
+In this project, we proposed a reputation-based search engine for academic papers. The work is mainly twofold: (1) we realized a basic search engine based on general similarity criterion, which could produce a relatively good results; (2) we tried to improve the search outcomes by additional information from the citations using PageRank algorithm. We raised new PageRank algorithm called subset PageRank targeting at the problem that some relevant papers are not similar to the query. Also, we design a Graphical User Interface (GUI) for our search engine.
+
 ## 1. Project Structure
 
 - **webapp/**
